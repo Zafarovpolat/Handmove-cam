@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handmove cam</title>
+</head>
+
+<body>
+    <div class="cam">
+        <video id="cam"></video>
+        <canvas id="camResult"></canvas>
+    </div>
+    <div class="result">
+    </div>
+    <div class="turn">
+        <button id="camOn">Turn on</button>
+        <button id="camOff">Turn off</button>
+    </div>
+
+    <style>
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite alternate;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradient {
+            20% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .cam {
+            width: 100vw;
+            height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        #cam {
+            display: none;
+        }
+
+        #camResult {
+            width: 40%;
+            height: 100% !important;
+            background-color: transparent;
+            border: 1px solid white;
+            border-radius: 20px;
+        }
+
+        .result {
+            width: 100vw;
+            height: 25vh;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            border-top: 1px solid white;
+            flex-wrap: wrap;
+        }
+
+        .result>img {
+            max-width: 200px;
+            max-height: 100%;
+            padding: 10px;
+        }
+
+        .turn {
+            position: absolute;
+            top: 5%;
+            right: 3%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .turn>button {
+            background-color: rgb(76, 194, 233);
+            border-radius: 30px;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 20px;
+            transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        .turn>button:hover {
+            cursor: pointer;
+            background-color: rgb(72, 175, 209);
+        }
+
+        .turn>button:active {
+            scale: 0.95;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
